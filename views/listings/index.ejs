@@ -46,55 +46,63 @@
         margin-left: auto;
         
       }
-    </style>
+      .filter:hover{
+        color : #fe424d;
+      }
+      .filter:active{
+        color: #fe424d;
+      }
+      </style>
+
 
     <div id="filters">
       <div class="ft">
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Trending')">
         <div><i class="fa-solid fa-fire"></i></div>
         <p>Trending</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Rooms')">
         <div><i class="fa-solid fa-bed"></i></div>
         <p>Rooms</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Iconic Citites')">
         <div><i class="fa-solid fa-mountain-city"></i></div>
         <p>Iconic Citites</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Mountains')">
         <div><i class="fa-solid fa-mountain"></i></div>
         <p>Mountains</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Castles')">
         <div><i class="fa-brands fa-fort-awesome"></i></div>
         <p>Castles</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Amazing pools')">
         <div><i class="fa-solid fa-person-swimming"></i></div>
         <p>Amazing pools</p>
       </div>
-      <div class="filter">
+      <div  class="filter" onclick="filterListing(this,'Camping')">
         <div><i class="fa-solid fa-campground"></i></div>
         <p>Camping</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Farms')">
         <div><i class="fa-solid fa-cow"></i></div>
         <p>Farms</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Arctic')">
         <div><i class="fa-solid fa-snowflake"></i></div>
         <p>Arctic</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Domes')">
         <div><i class="fa-solid fa-igloo"></i></div>
         <p>Domes</p>
       </div>
-      <div class="filter">
+      <div class="filter" onclick="filterListing(this,'Boat')">
         <div><i class="fa-solid fa-ship"></i></div>
         <p>Boat</p>
       </div>
     </div>
+
       
       <div class="tax-toggle">
         <div class="form-check-reverse form-switch ">
@@ -104,7 +112,11 @@
       </div>
       
     </div>
+
     
+    <% if(t){ %>
+      <h4>Listings Related to <%= type %></h4>
+  <% } %>
     <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-2 mt-3">
     <% for(let listing of allListings) {%>
 <a href="/listings/<%= listing._id %>" class="listing-link">
@@ -142,4 +154,13 @@
     }
     
   })
+
+  function filterListing(ele,type){
+
+    type=type.toLowerCase();
+    console.log(type);
+
+    window.location.href = `/listings/?type=${type}`;
+
+  }
 </script>

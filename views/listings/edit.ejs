@@ -16,6 +16,28 @@
             <textarea name="listing[description]" id="" class="form-control" required><%=listing.description %></textarea>
             <div class="invalid-feedback">Please enter short Description</div>
         </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select
+              class="form-select"
+              aria-label="Default select example"
+              id="category"
+              name="listing[category]"
+            >
+              <option selected value="<%= listing.category %>"><%= listing.category %></option>
+              <option value="trending">Trending</option>
+              <option value="rooms">Rooms</option>
+              <option value="iconic citites">Iconic Citites</option>
+              <option value="mountains">Mountains</option>
+              <option value="castles">Castles</option>
+              <option value="amazing pools">Amazing pools</option>
+              <option value="camping">Camping</option>
+              <option value="farms">Farms</option>
+              <option value="arctic">Arctic</option>
+              <option value="domes">Domes</option>
+              <option value="boat">Boat</option>
+            </select>
+          </div>
         <p>Orignal image</p>
         <img src="<%=orgImage %>" alt=""> 
         <div class="mb-3">
