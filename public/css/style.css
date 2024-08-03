@@ -116,3 +116,11 @@ body{
     height: 400px;
     width: 80vh;
 }
+
+  @media (max-width: 600px) {
+    #map {
+      height: 200px;
+      width: 200px; /* Smaller height for phone view */
+    }
+  }
+  

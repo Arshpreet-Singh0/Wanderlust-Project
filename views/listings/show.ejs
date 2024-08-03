@@ -36,8 +36,8 @@
         <a href="/listings/<%= listing._id %>/edit" class="btn btn-dark col-lg-1  offset-3 edit-btn">Edit</a>
     
 
-        <form action="/listings/<%= listing._id %>?_method=DELETE" method="post" >
-            <button class="btn btn-dark offset-5">Delete</button>
+        <form action="/listings/<%= listing._id %>?_method=DELETE" id="deleteForm" method="post" >
+            <button id="deleteButton" class="btn btn-dark offset-5">Delete</button>
         </form>
     </div>
     <% } %>
@@ -98,7 +98,8 @@
                 <p class="starability-result card-text" data-rating="<%= review.rating %>"></p>
             </div>
 
-            <form action="/listings/<%= listing.id %>/reviews/<%= review._id %>?_method=DELETE" method="post" class="mb-3"> <button class="btn btn-sm btn-dark">Delete</button></form>
+            <form action="/listings/<%= listing.id %>/reviews/<%= review._id %>?_method=DELETE" method="post" id="deleteReview" class="mb-3"> 
+                <button class="btn btn-sm btn-dark" id="delR">Delete</button></form>
         </div>
         
         <% } %>
@@ -114,5 +115,23 @@
     </div>
 </div>
 
+<script>
+    document.getElementById('deleteButton').addEventListener('click', function(event) {
+        event.preventDefault();
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('deleteForm').submit();
+            }
+        });
+    });
+</script>
     
 <script src="/js/map.js"></script>
